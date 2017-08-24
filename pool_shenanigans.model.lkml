@@ -1,4 +1,4 @@
-connection: "pool_shenanigans"
+connection: "pool_shenanigans_dev"
 
 # include all the views
 include: "*.view"

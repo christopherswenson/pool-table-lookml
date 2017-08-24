@@ -27,6 +27,11 @@ view: shot {
     sql: ${TABLE}.is_success ;;
   }
 
+  dimension: is_scratch {
+    type: yesno
+    sql: ${TABLE}.is_scratch ;;
+  }
+
   dimension: number_in_game {
     type: number
     sql: ${TABLE}.number_in_game ;;

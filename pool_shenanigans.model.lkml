@@ -20,6 +20,11 @@ explore: gameplayer {
     relationship: many_to_one
     sql_on: ${gameplayer.player_id} = ${player.id} ;;
   }
+
+  join: game {
+    relationship: many_to_one
+    sql_on: ${gameplayer.game_id} = ${game.id} ;;
+  }
 }
 
 explore: player {}

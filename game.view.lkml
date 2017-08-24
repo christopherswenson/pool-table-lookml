@@ -35,6 +35,17 @@ view: game {
     sql: ${TABLE}.started_at ;;
   }
 
+  dimension: duration_seconds {
+    type: number
+    sql: TIMESTAMPDIFF(SECOND, ${TABLE}.started_at, ${TABLE}.ended_at) ;;
+  }
+
+  dimension: duration_days {
+    type: number
+    sql: (${duration_seconds} / 86400.0) ;;
+    value_format: "mm:ss"
+  }
+
   measure: count {
     type: count
     drill_fields: [id]

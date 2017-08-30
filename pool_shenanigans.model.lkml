@@ -35,14 +35,19 @@ explore: shot {
     sql_on: ${turn.id} = ${shot.turn_id};;
   }
 
-  join: gameplayer {
+  join: game {
     relationship: many_to_one
-    sql_on: ${turn.player_id} = ${gameplayer.player_id} ;;
+    sql_on: ${game.id} = ${turn.game_id} ;;
   }
 
   join: player {
     relationship: one_to_one
-    sql_on: ${gameplayer.player_id} = ${player.id} ;;
+    sql_on: ${turn.player_id} = ${player.id} ;;
+  }
+
+  join: gameplayer {
+    relationship: many_to_one
+    sql_on: ${gameplayer.player_id} = ${player.id} && ${gameplayer.game_id} = ${game.id} ;;
   }
 
   join: ballremaining {
@@ -53,11 +58,6 @@ explore: shot {
   join: ball {
     relationship: one_to_many
     sql_on: ${ball.id} = ${ballremaining.ball_id} ;;
-  }
-
-  join: game {
-    relationship: many_to_one
-    sql_on: ${game.id} = ${turn.game_id} ;;
   }
 }
 
